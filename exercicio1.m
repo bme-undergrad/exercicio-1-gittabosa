@@ -13,9 +13,13 @@ t_roots = zeros (imax, 1);
 t_roots (1) = x0;
 erro = zeros(imax, 1);
 
-for ii = 1: length(t_roots)-1 
+for ii = 1:imax
    if ii ~= 1 
-       erro (ii) = abs((t_roots(ii)-t_roots(ii-1) )/t_roots(ii));
+       if t_roots(ii) ~= 0
+           erro(ii) = abs((t_roots(ii)-t_roots(ii-1))/t_roots(ii));
+       else
+           erro(ii) = abs(t_roots(ii)-t_roots(ii-1));
+       endif
         if erro(ii) < es 
             break;
         endif 
